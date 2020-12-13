@@ -1,0 +1,78 @@
+<div class="ui inverted dimmer" [class.active]="loading">
+  <div class="ui text loader">Loading</div>
+</div>
+
+<div class="jumbotron jumbotron-fluid bg-white text-center">
+  <div class="container">
+    <h2 class="display-3">Covid-19 Tracker</h2>
+    <app-dashboard-card
+      [totalConfirmed]="totalConfirmed"
+      [totalActive]="totalActive"
+      [totalRecovered]="totalRecovered"
+      [totalDeaths]="totalDeaths"
+    ></app-dashboard-card>
+  </div>
+</div>
+<div class="ui form">
+  <div class="inline fields">
+    <label>Case Type:</label>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+          type="radio"
+          id="a"
+          value="a"
+          #a
+          (click)="updateChart(a)"
+          name="caseType"
+          checked=""
+        />
+        <label for="a">Active</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+          type="radio"
+          id="c"
+          value="c"
+          #c
+          (click)="updateChart(c)"
+          name="caseType"
+        />
+        <label for="c">Confirmed</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+          type="radio"
+          id="r"
+          value="r"
+          #r
+          (click)="updateChart(r)"
+          name="caseType"
+        />
+        <label for="r">Recovered</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+          type="radio"
+          id="d"
+          value="d"
+          #d
+          (click)="updateChart(d)"
+          name="caseType"
+        />
+        <label for="d">Deaths</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col"><google-chart [data]="pieChart"></google-chart></div>
+  <div class="col"><google-chart [data]="columnChart"></google-chart></div>
+</div>
